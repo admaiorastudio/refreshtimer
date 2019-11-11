@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    x:Class="RefreshingTimer.MainPage">
+    <Grid
+        RowSpacing="0"
+        ColumnSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="40" />
+        </Grid.RowDefinitions>
+        <ListView
+            Grid.Row="0"
+            HasUnevenRows="True"
+            ItemsSource="{Binding Tasks}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Frame 
+                            Margin="2"
+                            BorderColor="Black"
+                            CornerRadius="8">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="40" />
+                                    <RowDefinition Height="40" />
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0" Text="{Binding Title}" FontSize="Medium" />
+                                <Label Grid.Row="1" Text="{Binding ElapsedTime, StringFormat='Elapsed time: {0:c}'}" />
+                            </Grid>
+                        </Frame>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button 
+            Grid.Row="1"
+            Text="Add new task"
+            Command="{Binding AddTaskCommand}"/>
+    </Grid>
+
+
+</ContentPage>
